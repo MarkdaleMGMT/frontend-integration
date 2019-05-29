@@ -22,3 +22,6 @@ div#sign-up, div#forgot{
     margin: 0;
 }
 
+div#registration-links{
+    margin-top: 8%;
+}
