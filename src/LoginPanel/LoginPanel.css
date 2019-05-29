@@ -22,3 +22,7 @@ div#sign-up, div#forgot{
     margin: 0;
 }
 
+div#registration-links{
+    padding-top: 10%;
+}
+
