@@ -5,3 +5,7 @@ div#links{
     font-size: 1em;
     letter-spacing: .030em;
 }
+
+a:hover, a:visited, a:link, a:active{
+    text-decoration: none;
+}

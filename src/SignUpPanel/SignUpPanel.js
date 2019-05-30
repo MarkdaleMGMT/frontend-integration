@@ -6,9 +6,9 @@ import InputField from '../InputField/InputField';
 import Button from '../Button/Button'
 import RegistrationLink from '../RegistrationLink/RegistrationLink';
 
-import './LoginPanel.css';
+import './SignUpPanel.css';
 
-class LoginPanel extends Component {
+class SignUpPanel extends Component {
     render() {
         return (
             <div className="container-fluid">
@@ -20,17 +20,22 @@ class LoginPanel extends Component {
                             <InputField></InputField>
                         </div>
                     </div>
+                    <div className="row">
+                        <div className="col-12">
+                            <InputField></InputField>
+                        </div>
+                    </div>
                     <div className="row" id="button">
                         <div className="col-4 mx-auto">
-                            <Button>Login</Button>
+                            <Button>Sign Up</Button>
                         </div>
                     </div>
                     <div className="row" id="registration-links">
-                        <div className="col-4 offset-2" id="sign-up">
-                            <Link to="/signup"><RegistrationLink>Sign Up</RegistrationLink></Link>
+                        <div className="col-4 offset-2" id="login">
+                            <Link to="/"><RegistrationLink>Login</RegistrationLink></Link>
                         </div>
                         <div className="col-4 offset-2" id="forgot">
-                        <Link to="/forgot"><RegistrationLink>Forgot</RegistrationLink></Link>
+                            <RegistrationLink>Forgot</RegistrationLink>
                         </div>
                     </div>
                 </Panel>
@@ -41,4 +46,4 @@ class LoginPanel extends Component {
     }
 }
 
-export default LoginPanel;
+export default SignUpPanel;
