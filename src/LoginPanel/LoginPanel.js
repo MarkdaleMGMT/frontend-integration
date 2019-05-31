@@ -11,7 +11,7 @@ import './LoginPanel.css';
 class LoginPanel extends Component {
     render() {
         return (
-            <div className="container-fluid">
+            <div className="container-fluid" id="login-panel">
                  <div className="row">
                      <div className="col-12" id="panel">
                 <Panel>

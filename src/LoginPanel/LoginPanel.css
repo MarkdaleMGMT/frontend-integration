@@ -1,8 +1,8 @@
-div#button{
+#button{
     text-align: center;
 }
 
-div.container-fluid{
+.container-fluid#login-panel{
     min-height: 51.9vh;
     min-width: 56.7vw;
     height: 51.9vh;
@@ -17,11 +17,11 @@ div.container-fluid{
 }
 
 
-div#sign-up, div#forgot{
+#sign-up, div#forgot{
     padding: 0;
     margin: 0;
 }
 
-div#registration-links{
+#registration-links{
     margin-top: 8%;
 }

@@ -1,6 +1,5 @@
 import { Route, Switch } from 'react-router-dom';
 import React, { Component } from 'react';
-import './App.css';
 import LoginPanel from './LoginPanel/LoginPanel'
 import Dashboard from './Dashboard/Dashboard'
 import SignUpPanel from './SignUpPanel/SignUpPanel';
