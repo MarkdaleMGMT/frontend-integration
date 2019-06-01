@@ -1,37 +1,9 @@
-var express = require("express");
-var path = require("path");
-var mysql = require('mysql')
-const {mysql_config}= require('./src/mysql.js')
-var app = express();
+const mysql = require("mysql2/promise");
+const { mysql_config } = require('../mysql.js')
 
-var pool = mysql.createPool({
-    host: '138.197.175.92',
-    user: 'app',
-    password: '43e6909617111a35ed091f453ca0204791cc51c583d81ac5',
-    database: 'live',
-    multipleStatements: true,
-    connectionLimit : 10
-});
 
-/*
+var pool = mysql.createPool(mysql_config);
 
-connection.connect((error) =>{
-    if (!!error){
-        console.log('Err')
-    }else{
-        console.log('Connected')
-        connection.query('SELECT * FROM account', (error, results, fields)=>{
-            if(error){
-                console.log("error" + error)
-            }else
-            
-            console.log(results)
-        })
-    }
-})
-*/
-
-var HTTP_PORT = process.env.PORT || 3001
 exports.connection = {
 
     query: async function (query,queryValues){
@@ -78,15 +50,3 @@ exports.connection = {
 
     }
 };
-
-
-app.use(express.static("build"));
-
-// Redirect Users to "index.html" if route not accessed using client side routing
-app.use((req, res) => {
-    res.sendFile(path.join(__dirname + "/build/index.html"));
-});
-
-app.listen(HTTP_PORT, ()=>{
-    console.log("listening on port: " + HTTP_PORT);
-});
