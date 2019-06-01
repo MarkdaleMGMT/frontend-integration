@@ -2,26 +2,20 @@
     text-align: center;
 }
 
-.container-fluid#login-panel{
-    min-height: 51.9vh;
+#login-panel{
+    /* min-height: 51.9vh;
     min-width: 56.7vw;
     height: 51.9vh;
     width: 56.7vw;
     border: 0;
     font-size: 1em;
     border-radius: 15px;
-    position: fixed;
-    top: 26.67%;
+
+    margin-top: 23%;
     left: 21.65%;
-    letter-spacing: .030em;
+    letter-spacing: .030em; */
+    padding: 10%; 
+    left: 21.65%;
 }
 
 
-#sign-up, div#forgot{
-    padding: 0;
-    margin: 0;
-}
-
-#registration-links{
-    margin-top: 8%;
-}

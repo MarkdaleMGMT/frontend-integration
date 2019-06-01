@@ -4,8 +4,8 @@ import './Panel.css'
 class Panel extends Component {
     render() {
         return (
-            <div className="card">
-                <div className="card-body">
+            <div className="card" id="panel">
+                <div className="card-body" id="panel">
                     {this.props.children}
                 </div>
             </div>

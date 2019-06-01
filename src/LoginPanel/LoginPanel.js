@@ -17,7 +17,12 @@ class LoginPanel extends Component {
                 <Panel>
                     <div className="row">
                         <div className="col-12">
-                            <InputField></InputField>
+                            <InputField input="Username"></InputField>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-12">
+                            <InputField input="Password"></InputField>
                         </div>
                     </div>
                     <div className="row" id="button">
@@ -26,10 +31,10 @@ class LoginPanel extends Component {
                         </div>
                     </div>
                     <div className="row" id="registration-links">
-                        <div className="col-4 offset-2" id="sign-up">
+                        <div className="col-6" id="sign-up">
                             <Link to="/signup"><RegistrationLink>Sign Up</RegistrationLink></Link>
                         </div>
-                        <div className="col-4 offset-2" id="forgot">
+                        <div className="col-6" id="forgot">
                         <Link to="/forgot"><RegistrationLink>Forgot</RegistrationLink></Link>
                         </div>
                     </div>

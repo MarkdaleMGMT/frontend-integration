@@ -1,32 +1,85 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+
 import './SideBar.css'
 
 class SideBar extends Component {
     render() {
         return (
-            <div className="col-sm-3 col-md-2  sidebar">
-                <ul className="nav nav-sidebar">
-                    <li className={(this.props.highlight === "Overview" ? 'active' : '')}><Link to="/">Dashboard <span className="sr-only">(current)</span></Link></li>
-                </ul>
-                <ul className="nav nav-sidebar">
-                    <li className={(this.props.highlight === "Projects" ? 'active' : '')}><Link to="/">Affiliates</Link></li>
-                    <li className={(this.props.highlight === "Teams" ? 'active' : '')}><Link to="/">Stats</Link></li>
-                    <li className={(this.props.highlight === "Employees" ? 'active' : '')}><Link to="/">Exchange</Link></li>
-                </ul>
-                <ul className="nav nav-sidebar">
-                    <li className={(this.props.highlight === "Projects" ? 'active' : '')}><Link to="/">CLAM</Link></li>
-                    <li className={(this.props.highlight === "Teams" ? 'active' : '')}><Link to="/">BTC</Link></li>
-                    <li className={(this.props.highlight === "Employees" ? 'active' : '')}><Link to="/">CAD</Link></li>
-                    <li className={(this.props.highlight === "Employees" ? 'active' : '')}><Link to="/">USD</Link></li>
-                    <li className={(this.props.highlight === "Employees" ? 'active' : '')}><Link to="/">GOLD</Link></li>
-                </ul>
-                <ul className="nav nav-sidebar">
-                    <li className={(this.props.highlight === "Projects" ? 'active' : '')}><Link to="/">Contact</Link></li>
-                    <li className={(this.props.highlight === "Teams" ? 'active' : '')}><Link to="/">Logout</Link></li>
-                    <li className={(this.props.highlight === "Employees" ? 'active' : '')}><Link to="/">Refferal Code:</Link></li>
-                </ul>
-            </div>
+            // <div className="col-sm-3 col-md-2 sidebar">
+            //     <ul className="nav nav-sidebar">
+            //         <li className={(this.props.highlight === "Overview" ? 'active' : '')}><Link to="/">Dashboard <span className="sr-only">(current)</span></Link></li>
+            //     </ul>
+            //     <ul className="nav nav-sidebar">
+            //         <li className={(this.props.highlight === "Projects" ? 'active' : '')}><Link to="/">Affiliates</Link></li>
+            //         <li className={(this.props.highlight === "Teams" ? 'active' : '')}><Link to="/">Stats</Link></li>
+            //         <li className={(this.props.highlight === "Employees" ? 'active' : '')}><Link to="/">Exchange</Link></li>
+            //     </ul>
+            //     <ul className="nav nav-sidebar">
+            //         <li className={(this.props.highlight === "Projects" ? 'active' : '')}><Link to="/">CLAM</Link></li>
+            //         <li className={(this.props.highlight === "Teams" ? 'active' : '')}><Link to="/">BTC</Link></li>
+            //         <li className={(this.props.highlight === "Employees" ? 'active' : '')}><Link to="/">CAD</Link></li>
+            //         <li className={(this.props.highlight === "Employees" ? 'active' : '')}><Link to="/">USD</Link></li>
+            //         <li className={(this.props.highlight === "Employees" ? 'active' : '')}><Link to="/">GOLD</Link></li>
+            //     </ul>
+            //     <ul className="nav nav-sidebar">
+            //         <li className={(this.props.highlight === "Projects" ? 'active' : '')}><Link to="/">Contact</Link></li>
+            //         <li className={(this.props.highlight === "Teams" ? 'active' : '')}><Link to="/">Logout</Link></li>
+            //         <li className={(this.props.highlight === "Employees" ? 'active' : '')}><Link to="/">Refferal Code:</Link></li>
+            //     </ul>
+            // </div>
+
+        <aside className="col-12 col-md-2 p-0 "id="side-bar">
+            <nav className="navbar navbar-expand navbar-dark flex-md-column flex-row align-items-start py-2" id="side-bar">
+                <div className="collapse navbar-collapse">
+                    <ul className="flex-md-column flex-row navbar-nav w-100 justify-content-between">
+                        <li className="nav-item">
+                            <a className="nav-link pl-0 text-nowrap" href="/"><i className="fa fa-bullseye fa-fw"></i> <span className="font-weight-bold">Affiliates</span></a>
+                        </li>
+                    </ul>
+                    <ul className="flex-md-column flex-row navbar-nav w-100 justify-content-between">
+                        <li className="nav-item">
+                            <a className="nav-link pl-0 text-nowrap" href="/"><i className="fa fa-bullseye fa-fw"></i> <span className="font-weight-bold">Affiliates</span></a>
+                        </li>
+                        <li className="nav-item">
+                            <Link To="/" className="nav-link pl-0"><i className="fa fa-heart-o fa-fw"></i> <span className="d-none d-md-inline">Link</span></Link>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link pl-0" href="/"><i className="fa fa-book fa-fw"></i> <span className="d-none d-md-inline">Link</span></a>
+                        </li>
+                    </ul>
+                    <ul className="flex-md-column flex-row navbar-nav w-100 justify-content-between">
+                        <li className="nav-item">
+                            <a className="nav-link pl-0 text-nowrap" href="/"><i className="fa fa-bullseye fa-fw"></i> <span className="font-weight-bold">Affiliates</span></a>
+                        </li>
+                        <li className="nav-item">
+                            <Link To="/" className="nav-link pl-0"><i className="fa fa-heart-o fa-fw"></i> <span className="d-none d-md-inline">Link</span></Link>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link pl-0" href="/"><i className="fa fa-book fa-fw"></i> <span className="d-none d-md-inline">Link</span></a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link pl-0" href="/"><i className="fa fa-heart codeply fa-fw"></i> <span className="d-none d-md-inline">Codeply</span></a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link pl-0" href="/"><i className="fa fa-star codeply fa-fw"></i> <span className="d-none d-md-inline">Link</span></a>
+                        </li>
+                    </ul>
+                    <ul className="flex-md-column flex-row navbar-nav w-100 justify-content-between">
+                        <li className="nav-item">
+                            <a className="nav-link pl-0 text-nowrap" href="/"><i className="fa fa-bullseye fa-fw"></i> <span className="font-weight-bold">Affiliates</span></a>
+                        </li>
+                        <li className="nav-item">
+                            <Link To="/" className="nav-link pl-0"><i className="fa fa-heart-o fa-fw"></i> <span className="d-none d-md-inline">Link</span></Link>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link pl-0" href="/"><i className="fa fa-book fa-fw"></i> <span className="d-none d-md-inline">Link</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+
         );
     }
 }

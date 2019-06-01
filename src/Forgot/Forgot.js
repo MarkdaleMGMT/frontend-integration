@@ -11,13 +11,13 @@ import './Forgot.css';
 class Forgot extends Component {
     render() {
         return (
-            <div className="container-fluid">
+            <div className="container-fluid" id="forgot-panel">
                 <div className="row">
                     <div className="col-12" id="panel">
                         <Panel>
                             <div className="row">
                                 <div className="col-12">
-                                    <InputField></InputField>
+                                    <InputField input="Email"></InputField>
                                 </div>
                             </div>
                             <div className="row" id="button">
@@ -26,10 +26,10 @@ class Forgot extends Component {
                                 </div>
                             </div>
                             <div className="row" id="registration-links">
-                                <div className="col-4 offset-2" id="login">
+                                <div className="col-6" id="login">
                                     <Link to="/"><RegistrationLink>Login</RegistrationLink></Link>
                                 </div>
-                                <div className="col-4 offset-2" id="sign-up">
+                                <div className="col-6" id="sign-up">
                                     <Link to="/signup"><RegistrationLink>Sign Up</RegistrationLink></Link>
                                 </div>
                             </div>

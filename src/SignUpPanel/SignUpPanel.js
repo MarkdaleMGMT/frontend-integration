@@ -11,18 +11,28 @@ import './SignUpPanel.css';
 class SignUpPanel extends Component {
     render() {
         return (
-            <div className="container-fluid">
+            <div className="container-fluid" id="signup-panel">
                  <div className="row">
                      <div className="col-12" id="panel">
                 <Panel>
                     <div className="row">
                         <div className="col-12">
-                            <InputField></InputField>
+                            <InputField input="Username"></InputField>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-12">
-                            <InputField></InputField>
+                            <InputField input="Password"></InputField>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-12">
+                            <InputField input="Email"></InputField>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-12">
+                            <InputField input="Referral Code"></InputField>
                         </div>
                     </div>
                     <div className="row" id="button">
@@ -31,11 +41,11 @@ class SignUpPanel extends Component {
                         </div>
                     </div>
                     <div className="row" id="registration-links">
-                        <div className="col-4 offset-2" id="login">
+                        <div className="col-6" id="login">
                             <Link to="/"><RegistrationLink>Login</RegistrationLink></Link>
                         </div>
-                        <div className="col-4 offset-2" id="forgot">
-                            <RegistrationLink>Forgot</RegistrationLink>
+                        <div className="col-6" id="forgot">
+                        <Link to="/forgot"><RegistrationLink>Forgot</RegistrationLink></Link>
                         </div>
                     </div>
                 </Panel>

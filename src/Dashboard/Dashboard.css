@@ -1,4 +1,8 @@
 div.background{
-    background-color: #F2F2F2;
+    background-color: #FFFFFF;
     opacity: 100;
+}
+
+body, html, div#root{
+    background-color: #FFFFFF;
 }
