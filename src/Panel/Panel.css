@@ -27,14 +27,14 @@ div.card-body#panel{
   width: 100%;
   border: 0;
   border-radius: 15px; 
-  overflow-x: auto;
+  overflow-x: hidden;
   overflow-y: hidden;
 
 }
 
 div.card-body{
-  padding-top: 11.7vh;
-  padding-bottom: 12.8%;
+  padding-top: 22.63%;
+  padding-bottom: 17.8%;
   padding-left: 23.9%;
-  padding-right: 23.9%;
-} */
+}
+*/
