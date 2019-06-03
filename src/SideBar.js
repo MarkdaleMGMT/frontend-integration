@@ -34,7 +34,7 @@ class SideBar extends Component {
                 <div className="collapse navbar-collapse">
                     <ul className="flex-md-column flex-row navbar-nav w-100 justify-content-between">
                         <li className="nav-item">
-                            <a className="nav-link pl-0 text-nowrap" href="/"><i className="fa fa-bullseye fa-fw"></i> <span className="font-weight-bold">Affiliates</span></a>
+                            <a className="nav-link pl-0 text-nowrap" href="/"><i className="fa fa-bullseye fa-fw"></i> <span className="font-weight-bold">Dashboard</span></a>
                         </li>
                     </ul>
                     <ul className="flex-md-column flex-row navbar-nav w-100 justify-content-between">
@@ -42,38 +42,38 @@ class SideBar extends Component {
                             <a className="nav-link pl-0 text-nowrap" href="/"><i className="fa fa-bullseye fa-fw"></i> <span className="font-weight-bold">Affiliates</span></a>
                         </li>
                         <li className="nav-item">
-                            <Link To="/" className="nav-link pl-0"><i className="fa fa-heart-o fa-fw"></i> <span className="d-none d-md-inline">Link</span></Link>
+                            <Link To="/" className="nav-link pl-0"><i className="fa fa-heart-o fa-fw"></i> <span className="d-none d-md-inline">Stats</span></Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link pl-0" href="/"><i className="fa fa-book fa-fw"></i> <span className="d-none d-md-inline">Link</span></a>
-                        </li>
-                    </ul>
-                    <ul className="flex-md-column flex-row navbar-nav w-100 justify-content-between">
-                        <li className="nav-item">
-                            <a className="nav-link pl-0 text-nowrap" href="/"><i className="fa fa-bullseye fa-fw"></i> <span className="font-weight-bold">Affiliates</span></a>
-                        </li>
-                        <li className="nav-item">
-                            <Link To="/" className="nav-link pl-0"><i className="fa fa-heart-o fa-fw"></i> <span className="d-none d-md-inline">Link</span></Link>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link pl-0" href="/"><i className="fa fa-book fa-fw"></i> <span className="d-none d-md-inline">Link</span></a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link pl-0" href="/"><i className="fa fa-heart codeply fa-fw"></i> <span className="d-none d-md-inline">Codeply</span></a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link pl-0" href="/"><i className="fa fa-star codeply fa-fw"></i> <span className="d-none d-md-inline">Link</span></a>
+                            <a className="nav-link pl-0" href="/"><i className="fa fa-book fa-fw"></i> <span className="d-none d-md-inline">Exchange</span></a>
                         </li>
                     </ul>
                     <ul className="flex-md-column flex-row navbar-nav w-100 justify-content-between">
                         <li className="nav-item">
-                            <a className="nav-link pl-0 text-nowrap" href="/"><i className="fa fa-bullseye fa-fw"></i> <span className="font-weight-bold">Affiliates</span></a>
+                            <a className="nav-link pl-0 text-nowrap" href="/"><i className="fa fa-bullseye fa-fw"></i> <span className="font-weight-bold">CLAM</span></a>
                         </li>
                         <li className="nav-item">
-                            <Link To="/" className="nav-link pl-0"><i className="fa fa-heart-o fa-fw"></i> <span className="d-none d-md-inline">Link</span></Link>
+                            <Link To="/" className="nav-link pl-0"><i className="fa fa-heart-o fa-fw"></i> <span className="d-none d-md-inline">BTC</span></Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link pl-0" href="/"><i className="fa fa-book fa-fw"></i> <span className="d-none d-md-inline">Link</span></a>
+                            <a className="nav-link pl-0" href="/"><i className="fa fa-book fa-fw"></i> <span className="d-none d-md-inline">CAD</span></a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link pl-0" href="/"><i className="fa fa-heart codeply fa-fw"></i> <span className="d-none d-md-inline">USD</span></a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link pl-0" href="/"><i className="fa fa-star codeply fa-fw"></i> <span className="d-none d-md-inline">GOLD</span></a>
+                        </li>
+                    </ul>
+                    <ul className="flex-md-column flex-row navbar-nav w-100 justify-content-between">
+                        <li className="nav-item">
+                            <a className="nav-link pl-0 text-nowrap" href="/"><i className="fa fa-bullseye fa-fw"></i> <span className="font-weight-bold">Contact</span></a>
+                        </li>
+                        <li className="nav-item">
+                            <Link To="/" className="nav-link pl-0"><i className="fa fa-heart-o fa-fw"></i><span className="d-none d-md-inline">Logout</span></Link>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link pl-0" href="/"><i className="fa fa-book fa-fw"></i> <span className="d-none d-md-inline">Refferal Code:(insert data)</span></a>
                         </li>
                     </ul>
                 </div>
