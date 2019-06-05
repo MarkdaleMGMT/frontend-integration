@@ -70,7 +70,7 @@ class SideBar extends Component {
                             <a className="nav-link pl-0 text-nowrap" href="/"><i className="fa fa-bullseye fa-fw"></i> <span className="font-weight-bold">Contact</span></a>
                         </li>
                         <li className="nav-item">
-                            <Link To="/" className="nav-link pl-0"><i className="fa fa-heart-o fa-fw"></i><span className="d-none d-md-inline">Logout</span></Link>
+                            <Link to="/" className="nav-link pl-0"><i className="fa fa-heart-o fa-fw"></i><span className="d-none d-md-inline">Logout</span></Link>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link pl-0" href="/"><i className="fa fa-book fa-fw"></i> <span className="d-none d-md-inline">Refferal Code:(insert data)</span></a>

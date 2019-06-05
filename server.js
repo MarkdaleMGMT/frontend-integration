@@ -4,34 +4,25 @@ var mysql = require('mysql')
 const {mysql_config}= require('./src/mysql.js')
 var app = express();
 
-var pool = mysql.createPool({
-    host: '138.197.175.92',
-    user: 'app',
-    password: '43e6909617111a35ed091f453ca0204791cc51c583d81ac5',
-    database: 'live',
-    multipleStatements: true,
-    connectionLimit : 10
-});
 
-/*
-
-connection.connect((error) =>{
-    if (!!error){
-        console.log('Err')
-    }else{
-        console.log('Connected')
-        connection.query('SELECT * FROM account', (error, results, fields)=>{
-            if(error){
-                console.log("error" + error)
-            }else
+// connection.connect((error) =>{
+//     if (!!error){
+//         console.log('Err')
+//     }else{
+//         console.log('Connected')
+//         connection.query('SELECT * FROM account', (error, results, fields)=>{
+//             if(error){
+//                 console.log("error" + error)
+//             }else
             
-            console.log(results)
-        })
-    }
-})
-*/
+//             console.log(results)
+//         })
+//     }
+// })
 
 var HTTP_PORT = process.env.PORT || 3001
+
+
 exports.connection = {
 
     query: async function (query,queryValues){
@@ -78,7 +69,6 @@ exports.connection = {
 
     }
 };
-
 
 app.use(express.static("public"));
 

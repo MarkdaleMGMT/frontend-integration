@@ -12,8 +12,8 @@ div.card#panel{
 }
 
 div.card-body#panel{
-   /* padding-top: 11.7%;
-  padding-bottom: 12.8%;  */
+  padding-top: 11.7%;
+  padding-bottom: 12.8%; 
   padding-left: 23.9%;
   padding-right: 23.9%;
   letter-spacing: .030em;

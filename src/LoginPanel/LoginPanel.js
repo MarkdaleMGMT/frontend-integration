@@ -11,30 +11,56 @@ import './LoginPanel.css';
 class LoginPanel extends Component {
     constructor(props) {
         super(props);
-        this.state = { 
-            formControls:{
-                name:{
-                    value: ''
-                }
+        this.state = {
+            user:{
+                username:'',
+                password: ''
             }
         };
+
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        
+        this.handleClearForm = this.handleClearForm.bind(this);
     }
-    handleChange = event => {
-        const name = event.target.name;
-        const value = event.target.value;
-        this.setState({ 
-            formControls: {
-                [name]: value
-            } 
-        });
-     }
+    handleChange(e) {
+        let value = e.target.value;
+        let name = e.target.name;
+        this.setState( prevState => {
+           return { 
+              user : {
+                       ...prevState.user, [name]: value
+                      }
+           }
+        }, () => console.log(this.state.user)
+        )
+    }
 
     handleSubmit(event) {
-        alert(this.state.username);
         event.preventDefault();
+        let userData = this.state.user;
+
+        fetch('https://still-tundra-89877.herokuapp.com/projects',{
+            method: "POST",
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+          }).then(response => {
+            response.json().then(data =>{
+              console.log("Successful" + JSON.stringify(data));
+            })
+        })
+    }
+
+    handleClearForm(e) {
+        console.log("clear form");
+        e.preventDefault();
+        this.setState({
+            user:{
+                username: '',
+                password: ''
+            }
+        })
     }
 
     render() {
@@ -43,26 +69,37 @@ class LoginPanel extends Component {
                 <div className="row">
                     <div className="col-12" id="panel">
                         <Panel>
-                            <form onSubmit={this.handleSubmit}>
+                            <form>
                                 <div className="row">
                                     <div className="col-12">
-                                        <InputField input="Username" 
-                                                    value={this.state.formControls.name.value}
-                                                    onChange={this.changeHandler}
+                                        <InputField type={"text"}
+                                                    title={"Username"}
+                                                    name={"username"}
+                                                    placeholder={"Username"}   
+                                                    value={this.state.user.username}                                           
+                                                    onChange={this.handleChange}
+                                                                           
                                         />
+
                                     </div>
                                 </div>
                                 <div className="row">
                                     <div className="col-12">
-                                        <InputField input="Password"
-                                                    value={this.state.formControls.name.value}
-                                                    onChange={this.changeHandler}
+                                    <InputField type={"password"}
+                                                    title={"Password"}
+                                                    name={"password"}
+                                                    placeholder={"Password"}  
+                                                    value={this.state.user.password}                                                
+                                                    onChange={this.handleChange}   
+                                                                                
                                         />
                                     </div>
                                 </div>
                                 <div className="row" id="button">
                                     <div className="col-4 mx-auto">
-                                        <Button type="submit">Login</Button>
+                                        <Button title={"Login"} 
+                                                onClick={this.handleSubmit}>
+                                        </Button>
                                     </div>
                                 </div>
                             </form>

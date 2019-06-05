@@ -1,24 +1,30 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './InputField.css'
 
-class InputField extends Component {
-    constructor(props){
-        super(props);
-    }
-    render() {
-        return (
-            <div className="form-group shadow">
-                <input 
-                    type={this.props.input.toLowerCase()} 
-                    id={this.props.input.toLowerCase()}
-                    className="form-control" 
-                    placeholder={this.props.input} 
-                    name={this.props.input.toLowerCase()}
-                    {...this.props}
-                />
-            </div>
-        );
-    }
+const InputField = (props) => {
+    return (
+        <div className="form-group shadow">
+            <input className="form-control"
+                    id={props.name}
+                    name={props.name}
+                    type={props.type}
+                    onChange={props.onChange}
+                    value={props.value}
+                    placeholder={props.placeholder}
+            />
+        </div>
+    );
+    
 }
 
 export default InputField
+
+/*           <div className="form-group shadow">
+<input 
+    type={this.props.input.toLowerCase()} 
+    id={this.props.input.toLowerCase()}
+    className="form-control" 
+    placeholder={this.props.input} 
+    name={this.props.input.toLowerCase()}
+/>
+</div>*/

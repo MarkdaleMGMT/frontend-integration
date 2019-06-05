@@ -1,12 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './Button.css'
 
-class Button extends Component {
-    render() {
+const Button = (props) => {
         return (
-            <button type={this.props.type} className="btn btn-rounded">{this.props.children}</button>
+            <button 
+                className="btn btn-rounded"
+                onClick={props.action}
+                >
+                {props.title}
+            </button>
         );
-    }
 }
 
 export default Button
