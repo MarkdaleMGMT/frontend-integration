@@ -6,29 +6,29 @@ import './SideBar.css'
 class SideBar extends Component {
     render() {
         return (
-            // <div className="col-sm-3 col-md-2 sidebar">
-            //     <ul className="nav nav-sidebar">
-            //         <li className={(this.props.highlight === "Overview" ? 'active' : '')}><Link to="/">Dashboard <span className="sr-only">(current)</span></Link></li>
-            //     </ul>
-            //     <ul className="nav nav-sidebar">
-            //         <li className={(this.props.highlight === "Projects" ? 'active' : '')}><Link to="/">Affiliates</Link></li>
-            //         <li className={(this.props.highlight === "Teams" ? 'active' : '')}><Link to="/">Stats</Link></li>
-            //         <li className={(this.props.highlight === "Employees" ? 'active' : '')}><Link to="/">Exchange</Link></li>
-            //     </ul>
-            //     <ul className="nav nav-sidebar">
-            //         <li className={(this.props.highlight === "Projects" ? 'active' : '')}><Link to="/">CLAM</Link></li>
-            //         <li className={(this.props.highlight === "Teams" ? 'active' : '')}><Link to="/">BTC</Link></li>
-            //         <li className={(this.props.highlight === "Employees" ? 'active' : '')}><Link to="/">CAD</Link></li>
-            //         <li className={(this.props.highlight === "Employees" ? 'active' : '')}><Link to="/">USD</Link></li>
-            //         <li className={(this.props.highlight === "Employees" ? 'active' : '')}><Link to="/">GOLD</Link></li>
-            //     </ul>
-            //     <ul className="nav nav-sidebar">
-            //         <li className={(this.props.highlight === "Projects" ? 'active' : '')}><Link to="/">Contact</Link></li>
-            //         <li className={(this.props.highlight === "Teams" ? 'active' : '')}><Link to="/">Logout</Link></li>
-            //         <li className={(this.props.highlight === "Employees" ? 'active' : '')}><Link to="/">Refferal Code:</Link></li>
-            //     </ul>
-            // </div>
-
+            <div className="col-sm-3 col-xl-2 sidebar" id="sidebar">
+                <ul className="nav nav-sidebar">
+                    <li className={(this.props.highlight === "Dashboard" ? 'active' : '')}><Link to="/">Dashboard <span className="sr-only">(current)</span></Link></li>
+                </ul>
+                <ul className="nav nav-sidebar">
+                    <li className={(this.props.highlight === "Affiliates" ? 'active' : '')}><Link to="/">Affiliates</Link></li>
+                    <li className={(this.props.highlight === "Stats" ? 'active' : '')}><Link to="/">Stats</Link></li>
+                    <li className={(this.props.highlight === "Exchange" ? 'active' : '')}><Link to="/">Exchange</Link></li>
+                </ul>
+                <ul className="nav nav-sidebar">
+                    <li className={(this.props.highlight === "Dashboard" ? 'active' : '')}><Link to="/">CLAM</Link></li>
+                    <li className={(this.props.highlight === "Dashboard" ? 'active' : '')}><Link to="/">BTC</Link></li>
+                    <li className={(this.props.highlight === "Dashboard" ? 'active' : '')}><Link to="/">CAD</Link></li>
+                    <li className={(this.props.highlight === "Dashboard" ? 'active' : '')}><Link to="/">USD</Link></li>
+                    <li className={(this.props.highlight === "Dashboard" ? 'active' : '')}><Link to="/">GOLD</Link></li>
+                </ul>
+                <ul className="nav nav-sidebar">
+                    <li className={(this.props.highlight === "Dashboard" ? 'active' : '')}><Link to="/">Contact</Link></li>
+                    <li className={(this.props.highlight === "Dashboard" ? 'active' : '')}><Link to="/">Logout</Link></li>
+                    <li className={(this.props.highlight === "Dashboard" ? 'active' : '')}><Link to="/">Refferal Code:</Link></li>
+                </ul>
+            </div>
+            /*
         <aside className="col-12 col-md-2 p-0 "id="side-bar">
             <nav className="navbar navbar-expand navbar-dark flex-md-column flex-row align-items-start py-2" id="side-bar">
                 <div className="collapse navbar-collapse">
@@ -79,7 +79,7 @@ class SideBar extends Component {
                 </div>
             </nav>
         </aside>
-
+        */
         );
     }
 }

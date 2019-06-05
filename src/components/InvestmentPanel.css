@@ -1,5 +1,6 @@
 .card#investment-panel{
-
+    margin: 10%;
+    overflow-x: auto;
 
 }
 

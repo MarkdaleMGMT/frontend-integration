@@ -9,7 +9,7 @@ class Dashboard extends Component {
         return (
             <MainContainer sidebar="Dashboard">
                 <div className="row">
-                    <div className="col-6">
+                    <div className="col-12">
                     <InvestmentPanel></InvestmentPanel>
                     </div>
                 </div>

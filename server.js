@@ -1,4 +1,5 @@
 const express = require('express')
+const path = require('path')
 const bodyParser = require('body-parser')
 const { routes } = require('./src/app');
 const { createTerminus } = require('@godaddy/terminus');
@@ -11,8 +12,6 @@ const port = 3001 // port
 const app = express()
 
 var { connection } = require('./src/app/util/mysql_connection')
-
-
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
