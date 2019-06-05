@@ -27,7 +27,7 @@ div.card-body#panel{
   width: 100%;
   border: 0;
   border-radius: 15px; 
-  overflow-x: auto;
+  overflow-x: hidden;
   overflow-y: hidden;
 
 }
