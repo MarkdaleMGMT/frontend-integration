@@ -35,12 +35,23 @@ class LoginPanel extends Component {
         )
     }
 
+    componentDidMount() {
+
+    }
+
     handleSubmit(event) {
         event.preventDefault();
         let userData = this.state.user;
 
-        fetch('https://still-tundra-89877.herokuapp.com/projects',{
-            method: "GET",
+        var url = "http://localhost:3001"
+
+        fetch(url + "/frontend/login",{
+            method: "POST",
+            mode: "cors:",
+            body: JSON.stringify({
+                "username": userData.user,
+                "password": userData.password,
+              }), 
             headers: {
               'Accept': 'application/json',
               'Content-Type': 'application/json'

@@ -12,8 +12,8 @@ class SideBar extends Component {
                 </ul>
                 <ul className="nav nav-sidebar">
                     <li className={(this.props.highlight === "Affiliates" ? 'active' : '')}><Link to="/">Affiliates</Link></li>
-                    <li className={(this.props.highlight === "Stats" ? 'active' : '')}><Link to="/">Stats</Link></li>
-                    <li className={(this.props.highlight === "Exchange" ? 'active' : '')}><Link to="/">Exchange</Link></li>
+                    <li className={(this.props.highlight === "Dashboard" ? 'active' : '')}><Link to="/">Stats</Link></li>
+                    <li className={(this.props.highlight === "Dashboard" ? 'active' : '')}><Link to="/">Exchange</Link></li>
                 </ul>
                 <ul className="nav nav-sidebar">
                     <li className={(this.props.highlight === "Dashboard" ? 'active' : '')}><Link to="/">CLAM</Link></li>

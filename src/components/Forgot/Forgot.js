@@ -37,7 +37,7 @@ class Forgot extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        let userData = this.state.user;
+      //  let userData = this.state.user;
 
         fetch('https://still-tundra-89877.herokuapp.com/projects',{
             method: "POST",
