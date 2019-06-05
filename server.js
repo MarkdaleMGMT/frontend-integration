@@ -1,6 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const { routes } = require('./app');
+const { routes } = require('./src/app');
 const { createTerminus } = require('@godaddy/terminus');
 
 
