@@ -10,7 +10,7 @@ const http = require('http');
 const port = 3001 // port
 const app = express()
 
-var { connection } = require('.util/mysql_connection')
+var { connection } = require('./src/app/util/mysql_connection')
 
 
 
