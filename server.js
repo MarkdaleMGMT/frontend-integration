@@ -1,82 +1,83 @@
-var express = require("express");
-var path = require("path");
-var mysql = require('mysql')
-const {mysql_config}= require('./src/mysql.js')
-var app = express();
+const express = require('express')
+const bodyParser = require('body-parser')
+const { routes } = require('./app');
+const { createTerminus } = require('@godaddy/terminus');
 
 
-// connection.connect((error) =>{
-//     if (!!error){
-//         console.log('Err')
-//     }else{
-//         console.log('Connected')
-//         connection.query('SELECT * FROM account', (error, results, fields)=>{
-//             if(error){
-//                 console.log("error" + error)
-//             }else
-            
-//             console.log(results)
-//         })
-//     }
-// })
+const http = require('http');
+// var https = require('https');
 
-var HTTP_PORT = process.env.PORT || 3001
+const port = 3001 // port
+const app = express()
+
+var { connection } = require('.util/mysql_connection')
 
 
-exports.connection = {
 
-    query: async function (query,queryValues){
-      return await pool.query(query,queryValues);
-    },
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: true
+}))
+// set CORS
+app.use(function(req, res, next) {
+    let origins = ['localhost']
 
-    begin_transaction: async function(queriesWithValues){
-
-      try{
-
-        var connection = await pool.getConnection();
-        console.log("acquired connection");
-
-        await connection.beginTransaction();
-        console.log("transaction started");
-
-        const queryPromises = [];
-
-        queriesWithValues.forEach((queryWithValues, index) => {
-            queryPromises.push(connection.query(queryWithValues.query, queryWithValues.queryValues));
-        });
-        let results = await Promise.all(queryPromises);
-        console.log("results",results);
-
-        await connection.commit();
-        await connection.release();
-
-        return Promise.resolve(results);
-      }
-      catch(err){
-        console.log("error",err);
-        await connection.rollback();
-        await connection.release();
-
-        return Promise.reject(err);
-      }
-
-    },
-
-    release_all_connections: async function(){
-
-      await pool.end();
-      console.log("all connections in the pool have ended")
-
+    if (req.headers.origin) {
+        for (let i = 0; i < origins.length; i++) {
+            let origin = origins[i]
+            if (req.headers.origin.indexOf(origin) > -1) {
+                res.setHeader('Access-Control-Allow-Origin', req.headers.origin)
+            }
+        }
     }
-};
 
-app.use(express.static("public"));
-
-// Redirect Users to "index.html" if route not accessed using client side routing
-app.use((req, res) => {
-    res.sendFile(path.join(__dirname + "/public/index.html"));
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, id, token, login_uuid')
+    next()
 });
 
-app.listen(HTTP_PORT, ()=>{
-    console.log("listening on port: " + HTTP_PORT);
+// mount the routes
+app.use(routes);
+
+
+const server = http.createServer(app);
+
+createTerminus(server, {
+  signal: 'SIGINT',
+   healthChecks: {
+    '/healthcheck': onHealthCheck,
+  },
+  onSignal
 });
+
+function onSignal() {
+  console.log('server is starting cleanup');
+  // start cleanup of resource, like databases or file descriptors
+
+  //close the connection pool
+  connection.release_all_connections()
+
+}
+
+async function onHealthCheck() {
+  console.log('server is health check');
+  // checks if the system is healthy, like the db connection is live
+  // resolves, if health, rejects if not
+}
+
+
+
+server.listen(port,function (err) {
+  if (err) {
+    throw err
+  }
+
+  console.log(`server is listening on ${port}...`)
+});
+
+// app.listen(port, function (err) {
+//   if (err) {
+//     throw err
+//   }
+//
+//   console.log(`server is listening on ${port}...`)
+// })

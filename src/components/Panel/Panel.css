@@ -12,29 +12,17 @@ div.card#panel{
 }
 
 div.card-body#panel{
+  padding-top: 10px;
+  letter-spacing: .030em;
+}
+
+@media (min-width: 768px) {
+div.card-body#panel{
   padding-top: 11.7%;
   padding-bottom: 12.8%; 
   padding-left: 23.9%;
   padding-right: 23.9%;
   letter-spacing: .030em;
 }
-
-
-/* div.card{
-  min-height: 51.9vh;
-  height: 51.9vh;
-  min-width: 100%;
-  width: 100%;
-  border: 0;
-  border-radius: 15px; 
-  overflow-x: hidden;
-  overflow-y: hidden;
-
 }
 
-div.card-body{
-  padding-top: 11.7vh;
-  padding-bottom: 12.8%;
-  padding-left: 23.9%;
-  padding-right: 23.9%;
-} */
