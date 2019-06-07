@@ -4,6 +4,7 @@ import LoginPanel from './LoginPanel/LoginPanel'
 import Dashboard from './Dashboard/Dashboard'
 import SignUpPanel from './SignUpPanel/SignUpPanel';
 import Forgot from './Forgot/Forgot';
+import LoginPage from './Login'
 
 class App extends Component {
   render() {
@@ -20,6 +21,9 @@ class App extends Component {
         )} />
         <Route exact path='/forgot' render={() => (
           <Forgot />
+        )}/>
+         <Route exact path='/login' render={() => (
+          <LoginPage />
         )}/>
         <Route render={() => (
           <h1>Not Found</h1>

@@ -19,7 +19,7 @@ class LoginPanel extends Component {
         };
 
         this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.login = this.login.bind(this);
         this.handleClearForm = this.handleClearForm.bind(this);
     }
     handleChange(e) {
@@ -39,17 +39,24 @@ class LoginPanel extends Component {
 
     }
 
-    handleSubmit(event) {
+    handleClick(e) {
+        e.preventDefault();
+        console.log('The link was clicked.');
+      }
+
+    login(event) {
+
         event.preventDefault();
         let userData = this.state.user;
+        console.log("userData", userData);
 
         var url = "http://localhost:3001"
 
         fetch(url + "/frontend/login",{
             method: "POST",
-            mode: "cors:",
+            mode: "cors",
             body: JSON.stringify({
-                "username": userData.user,
+                "username": userData.username,
                 "password": userData.password,
               }), 
             headers: {
@@ -80,7 +87,7 @@ class LoginPanel extends Component {
                 <div className="row">
                     <div className="col-12" id="panel">
                         <Panel>
-                            <form>
+                            <form >
                                 <div className="row">
                                     <div className="col-12">
                                         <InputField type={"text"}
@@ -88,10 +95,8 @@ class LoginPanel extends Component {
                                                     name={"username"}
                                                     placeholder={"Username"}   
                                                     value={this.state.user.username}                                           
-                                                    onChange={this.handleChange}
-                                                                           
+                                                    onChange={this.handleChange}                                     
                                         />
-
                                     </div>
                                 </div>
                                 <div className="row">
@@ -101,15 +106,16 @@ class LoginPanel extends Component {
                                                     name={"password"}
                                                     placeholder={"Password"}  
                                                     value={this.state.user.password}                                                
-                                                    onChange={this.handleChange}   
-                                                                                
+                                                    onChange={this.handleChange}                                                                           
                                         />
                                     </div>
                                 </div>
                                 <div className="row" id="button">
                                     <div className="col-4 mx-auto">
-                                        <Button title={"Login"} 
-                                                onClick={this.handleSubmit}>
+                                        <Button type="submit" 
+                                                title={"Login"}
+                                                action={this.login}                                       
+                                                >
                                         </Button>
                                     </div>
                                 </div>

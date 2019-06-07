@@ -40,7 +40,7 @@ class Forgot extends Component {
       //  let userData = this.state.user;
 
         fetch('https://still-tundra-89877.herokuapp.com/projects',{
-            method: "POST",
+            method: "GET",
             headers: {
               'Accept': 'application/json',
               'Content-Type': 'application/json'
