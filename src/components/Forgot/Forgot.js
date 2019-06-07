@@ -13,50 +13,73 @@ class Forgot extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            user:{
+            user: {
                 email: ''
             }
         };
 
         this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleClick = this.handleClick.bind(this);
         this.handleClearForm = this.handleClearForm.bind(this);
     }
     handleChange(e) {
         let value = e.target.value;
         let name = e.target.name;
-        this.setState( prevState => {
-           return { 
-              user : {
-                       ...prevState.user, [name]: value
-                      }
-           }
+        this.setState(prevState => {
+            return {
+                user: {
+                    ...prevState.user, [name]: value
+                }
+            }
         }, () => console.log(this.state.user)
         )
     }
 
-    handleSubmit(event) {
-        event.preventDefault();
-      //  let userData = this.state.user;
+    validateEmail(email) {
+        let re = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+        return re.test(email)
+    }
 
-        fetch('https://still-tundra-89877.herokuapp.com/projects',{
-            method: "GET",
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            },
-          }).then(response => {
-            response.json().then(data =>{
-              console.log("Successful" + JSON.stringify(data));
+    handleClick(event) {
+        event.preventDefault();
+        //  let userData = this.state.user;
+        var url = "http://localhost:3001"
+        
+        if (this.validateEmail(this.state.user.email)) {
+
+            fetch(url + "/frontend/reset_password", {
+                method: "POST",
+                mode: "cors",
+                body: JSON.stringify({
+                    "email": this.state.user.email
+                }), // string or object
+                headers: {
+                    'Content-Type': "application/json"
+                }
+            }).then((response) => {
+                if (response.status !== 200){
+                    console.log("Email does not exist");
+                    alert("Email does not exist");            }
+                else{
+                    console.log("success: " + JSON.stringify(response));
+                    alert("Verification e-mail sent. Check your inbox to confirm your account, (might go to your junk folder)")
+                }
+            }).catch((error) => {
+                console.log(error);
+                alert("Cannot reest password")
             })
-        })
+        }
+        else {
+            alert("Email in incorrect format!");
+        }
+
     }
 
     handleClearForm(e) {
         console.log("clear form");
         e.preventDefault();
         this.setState({
-            user:{
+            user: {
                 email: ''
             }
         })
@@ -70,7 +93,7 @@ class Forgot extends Component {
                         <Panel>
                             <div className="row">
                                 <div className="col-12">
-                                <InputField type={"email"}
+                                    <InputField type={"email"}
                                         title={"Email"}
                                         name={"email"}
                                         placeholder={"Email"}
@@ -82,8 +105,9 @@ class Forgot extends Component {
                             </div>
                             <div className="row" id="button">
                                 <div className="col-6 mx-auto">
-                                    <Button title={"Reset Password"}
-                                    />
+                                    <Button onClick={this.handleClick}>
+                                        Reset Pasword
+                                        </Button>
                                 </div>
                             </div>
                             <div className="row" id="registration-links">

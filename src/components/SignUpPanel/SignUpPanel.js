@@ -21,7 +21,7 @@ class SignUpPanel extends Component {
         }
 
         this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleClick = this.handleClick.bind(this);
         this.handleClearForm = this.handleClearForm.bind(this);
     }
 
@@ -35,29 +35,34 @@ class SignUpPanel extends Component {
                     ...prevState.newUser, [name]: value
                 }
             }
-        }, () => console.log("changed" + this.state.newUser)
+        }, () => console.log("changed" + JSON.stringify(this.state.newUser))
         )
 
     }
 
-    handleSubmit(event) {
+    handleClick(event) {
         event.preventDefault();
-       // let userData = this.state.user;
+        // let userData = this.state.user;
+        var url = "http://localhost:3001"
 
-        fetch('https://still-tundra-89877.herokuapp.com/projects', {
-            method: "POST",
+        fetch(url + '/frontend/all_users"', {
+            method: "GET",
+            mode: 'cors',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
-            },
-        }).then(response => {
+            }
+        }).then((response) => {
             response.json().then(data => {
                 console.log("Successful" + JSON.stringify(data));
             })
+            .catch((error) => {
+                console.log("Unable to sign up " + error);
+            })
         })
-        this.handleClearForm(event);
     }
 
+    //Resetting state to default
     handleClearForm(e) {
         console.log("clear form");
         e.preventDefault();
@@ -77,58 +82,61 @@ class SignUpPanel extends Component {
                 <div className="row">
                     <div className="col-12" id="panel">
                         <Panel>
-                            <div className="row">
-                                <div className="col-12">
-                                    <InputField type={"text"}
-                                        title={"Username"}
-                                        name={"username"}
-                                        placeholder={"Username"}
-                                        value={this.state.newUser.username}
-                                        onChange={this.handleChange}
-                                    />
+                            <form>
+                                <div className="row">
+                                    <div className="col-12">
+                                        <InputField type={"text"}
+                                            title={"Username"}
+                                            name={"username"}
+                                            placeholder={"Username"}
+                                            value={this.state.newUser.username}
+                                            onChange={this.handleChange}
+                                        />
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-12">
-                                    <InputField type={"password"}
-                                        title={"Password"}
-                                        name={"password"}
-                                        placeholder={"Password"}
-                                        value={this.state.newUser.password}
-                                        onChange={this.handleChange}
+                                <div className="row">
+                                    <div className="col-12">
+                                        <InputField type={"password"}
+                                            title={"Password"}
+                                            name={"password"}
+                                            placeholder={"Password"}
+                                            value={this.state.newUser.password}
+                                            onChange={this.handleChange}
 
-                                    />
+                                        />
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-12">
-                                    <InputField type={"email"}
-                                        title={"Email"}
-                                        name={"email"}
-                                        placeholder={"Email"}
-                                        value={this.state.newUser.email}
-                                        onChange={this.handleChange}
+                                <div className="row">
+                                    <div className="col-12">
+                                        <InputField type={"email"}
+                                            title={"Email"}
+                                            name={"email"}
+                                            placeholder={"Email"}
+                                            value={this.state.newUser.email}
+                                            onChange={this.handleChange}
 
-                                    />
+                                        />
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-12">
-                                    <InputField type={"text"}
-                                        title={"Refferal Code"}
-                                        name={"refCode"}
-                                        placeholder={"Refferal Code"}
-                                        value={this.state.newUser.refCode}
-                                        onChange={this.handleChange}
-                                    />
+                                <div className="row">
+                                    <div className="col-12">
+                                        <InputField type={"text"}
+                                            title={"Refferal Code"}
+                                            name={"refCode"}
+                                            placeholder={"Refferal Code"}
+                                            value={this.state.newUser.refCode}
+                                            onChange={this.handleChange}
+                                        />
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="row" id="button">
-                                <div className="col-4 mx-auto">
-                                    <Button title={"Sign Up"}
-                                    ></Button>
+                                <div className="row" id="button">
+                                    <div className="col-4 mx-auto">
+                                        <Button onClick={this.handleClick}>
+                                            Sign Up
+                                        </Button>
+                                    </div>
                                 </div>
-                            </div>
+                            </form>
                             <div className="row" id="registration-links">
                                 <div className="col-6" id="login">
                                     <Link to="/"><RegistrationLink>Login</RegistrationLink></Link>

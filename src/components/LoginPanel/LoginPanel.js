@@ -19,7 +19,7 @@ class LoginPanel extends Component {
         };
 
         this.handleChange = this.handleChange.bind(this);
-        this.login = this.login.bind(this);
+        this.handleClick = this.handleClick.bind(this);
         this.handleClearForm = this.handleClearForm.bind(this);
     }
     handleChange(e) {
@@ -39,12 +39,11 @@ class LoginPanel extends Component {
 
     }
 
-    handleClick(e) {
-        e.preventDefault();
-        console.log('The link was clicked.');
-      }
+    componentWillUnmount(){
 
-    login(event) {
+    }
+
+    handleClick(event) {
 
         event.preventDefault();
         let userData = this.state.user;
@@ -66,8 +65,10 @@ class LoginPanel extends Component {
           }).then(response => {
             response.json().then(data =>{
               console.log("Successful" + JSON.stringify(data));
+              
             })
         })
+
     }
 
     handleClearForm(e) {
@@ -112,10 +113,8 @@ class LoginPanel extends Component {
                                 </div>
                                 <div className="row" id="button">
                                     <div className="col-4 mx-auto">
-                                        <Button type="submit" 
-                                                title={"Login"}
-                                                action={this.login}                                       
-                                                >
+                                        <Button  onClick={this.handleClick}>
+                                            Login
                                         </Button>
                                     </div>
                                 </div>
