@@ -42,24 +42,77 @@ class SignUpPanel extends Component {
 
     handleClick(event) {
         event.preventDefault();
-        // let userData = this.state.user;
-        var url = "http://localhost:3001"
+        let userData = this.state.newUser;
+        
+        if(this.stringValidator(userData.username) || this.stringValidator(userData.email) 
+        || this.stringValidator(userData.password) || this.stringValidator(userData.refCode)){
+            alert("Please fill in the form!");
+        }
+        else if (this.validateEmail(this.state.newUser.email)){
+            var url = "http://localhost:3001"
 
-        fetch(url + '/frontend/all_users"', {
-            method: "GET",
-            mode: 'cors',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        }).then((response) => {
-            response.json().then(data => {
-                console.log("Successful" + JSON.stringify(data));
+            fetch(url + '/frontend/all_users', {
+                method: "GET",
+                mode: 'cors',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            }).then((response) => {
+                response.json().then(data => {
+                    console.log("Successful" + JSON.stringify(data));
+                    //console.log("Successful" + JSON.stringify(data.users[0]));
+                    let found = false;
+
+                    data.users.forEach((data) => {
+                        if (data.username === this.state.newUser.username){
+                            found = true;
+                            alert("Username Taken");
+                            return;
+
+                        }
+                        else if(data.email === this.state.newUser.email){
+                            found = true;
+                            alert("Email Taken");
+                            return;
+                        }                   
+                    })
+
+                    if(!found){
+                        fetch(url + "/frontend/signup", {
+                            method: "POST",
+                            mode: "cors",
+                            body: JSON.stringify({
+                              "username": userData.username,
+                              "email": userData.email,
+                              "password": userData.password,
+                              "code": userData.refCode
+                            }), // string or object
+                            headers: {
+                              'Content-Type': "application/json"
+                            }
+                        }).then((response) => {
+                            if (response.state !== 200){
+                                return;
+                            }
+                            else {
+                            response.json().then(data => {
+                                console.log("Successful" + JSON.stringify(data));
+                                //console.log("Successful" + JSON.stringify(data.users[0]));
+                                alert("Verification e-mail sent. Check your inbox to confirm your account, (might go to your junk folder)")              
+                            });
+                        }
+                        });                             
+                    }
+                })
+                .catch((error) => {
+                    console.log("Unable to sign up " + error);
+                })
             })
-            .catch((error) => {
-                console.log("Unable to sign up " + error);
-            })
-        })
+        }
+        else{
+            alert("Enter a valid email");
+        }
     }
 
     //Resetting state to default
@@ -74,6 +127,15 @@ class SignUpPanel extends Component {
                 refCode: ''
             }
         })
+    }
+
+    validateEmail(email){
+        let re = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+        return re.test(email)
+      }
+    
+    stringValidator(string){
+        return string.trim() === "" || string == null || string === "username" || string === "pass" || string === "code"
     }
 
     render() {
