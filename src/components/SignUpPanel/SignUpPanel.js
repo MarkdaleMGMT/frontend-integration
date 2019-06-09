@@ -65,14 +65,14 @@ class SignUpPanel extends Component {
                 //console.log("Successful" + JSON.stringify(data.users[0]));
                 let found = false;
 
-                res.users.forEach((data) => {
-                    if (res.username === this.state.newUser.username) {
+                res.data.users.forEach((data) => {
+                    if (data.username === this.state.newUser.username) {
                         found = true;
                         alert("Username Taken");
                         return;
 
                     }
-                    else if (res.email === this.state.newUser.email) {
+                    else if (data.email === this.state.newUser.email) {
                         found = true;
                         alert("Email Taken");
                         return;
@@ -80,8 +80,9 @@ class SignUpPanel extends Component {
                 })
 
                 if (!found) {
-                    Axios(url + "/frontend/signup", {
-                        method: "POST",
+                    fetch({
+                        url: url + "/frontend/signup",
+                        method: "post",
                         mode: "cors",
                         body: JSON.stringify({
                             "username": userData.username,
@@ -97,11 +98,13 @@ class SignUpPanel extends Component {
                             return;
                         }
                         else {
-                            console.log("Successful" + JSON.stringify(res));
+                            console.log("Successful" + JSON.stringify());
                             //console.log("Successful" + JSON.stringify(data.users[0]));
                             alert("Verification e-mail sent. Check your inbox to confirm your account, (might go to your junk folder)")
                         };
-                    });
+                    }).catch((err) => {
+                        console.log(err)
+                    })
                 }
             }).catch((error) => {
                     console.log("Unable to sign up " + error);
