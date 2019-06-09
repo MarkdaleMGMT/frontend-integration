@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Axios from 'axios';
 
 import Panel from '../Panel/Panel';
 import InputField from '../InputField/InputField';
@@ -47,7 +48,7 @@ class Forgot extends Component {
         
         if (this.validateEmail(this.state.user.email)) {
 
-            fetch(url + "/frontend/reset_password", {
+            Axios(url + "/frontend/reset_password", {
                 method: "POST",
                 mode: "cors",
                 body: JSON.stringify({
