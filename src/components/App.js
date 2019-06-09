@@ -1,10 +1,29 @@
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect} from 'react-router-dom';
 import React, { Component } from 'react';
 import LoginPanel from './LoginPanel/LoginPanel'
 import Dashboard from './Dashboard/Dashboard'
 import SignUpPanel from './SignUpPanel/SignUpPanel';
 import Forgot from './Forgot/Forgot';
-import LoginPage from './Login'
+
+const testAuth = {
+  isAuthenticated: false,
+  authenticated(cb) {
+    this.isAuthenticated = true;
+    setTimeout(cb, 100)
+  },
+  signout(cb){
+    this.isAuthenticated = false;
+    setTimeout(cb, 100)
+  }
+}
+
+const PrivateRoute = ({ component: Component, ... rest}) => (
+  <Route {...rest} render={(props) => (
+    testAuth.isAuthenticated === true ? <Component {...props}/> : <Redirect to='/' />
+  )} />
+)
+
+
 
 class App extends Component {
   render() {
@@ -22,9 +41,9 @@ class App extends Component {
         <Route exact path='/forgot' render={() => (
           <Forgot />
         )}/>
-         <Route exact path='/login' render={() => (
-          <LoginPage />
-        )}/>
+        <PrivateRoute path='/protected' render={() => (
+          <Dashboard/ >
+        )} />
         <Route render={() => (
           <h1>Not Found</h1>
         )} />

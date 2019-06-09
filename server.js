@@ -1,9 +1,8 @@
-const express = require('express')
-const path = require('path')
-const bodyParser = require('body-parser')
+const express = require('express');
+const path = require('path');
+const bodyParser = require('body-parser');
 const { routes } = require('./src/app');
 const { createTerminus } = require('@godaddy/terminus');
-
 
 const http = require('http');
 // var https = require('https');
@@ -12,6 +11,14 @@ const port = 3001 // port
 const app = express()
 
 var { connection } = require('./src/app/util/mysql_connection')
+
+
+
+// // tell passport to use our "strategy"
+// passport.use(strategy);
+
+// // add passport as application-level middleware
+// app.use(passport.initialize());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({

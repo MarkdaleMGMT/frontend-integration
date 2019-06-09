@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+//import Axios from 'axios';
 
 import Panel from '../Panel/Panel';
 import InputField from '../InputField/InputField';
@@ -15,7 +16,8 @@ class LoginPanel extends Component {
             user:{
                 username:'',
                 password: ''
-            }
+            },
+            redirect: '/'
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -57,16 +59,39 @@ class LoginPanel extends Component {
             body: JSON.stringify({
                 "username": userData.username,
                 "password": userData.password,
-              }), 
+            }), 
             headers: {
               'Accept': 'application/json',
               'Content-Type': 'application/json'
             },
-          }).then(response => {
-            response.json().then(data =>{
-              console.log("Successful" + JSON.stringify(data));
-              
-            })
+        }).then(response => {
+            if (response.status === 200){
+                response.json().then(data => {
+                console.log("Successful" + JSON.stringify(data));
+                
+                let sessionTimeout = .25; //hours
+                let loginDuration = new Date();
+                loginDuration.setTime(loginDuration.getTime() + (sessionTimeout * 60 * 60 * 1000));
+                document.cookie = "CrewCentreSession=Valid; " + loginDuration.toGMTString() + "; path=/";
+                let responseData = {
+                  username: userData.username,
+                  clam_balance: data.clam_balance,
+                  admin: data.level === 0 ? true : false,
+                  ref_code: data.ref_code
+                }
+                sessionStorage.setItem("data", JSON.stringify(responseData));
+                console.log("NAVIGATING")
+                if(responseData.admin){
+                  // redirect to admin dashboard
+                }
+                else{
+                    // redirect to dashboard
+                }
+                })
+            }
+            else{
+                
+            }
         })
 
     }
@@ -88,7 +113,7 @@ class LoginPanel extends Component {
                 <div className="row">
                     <div className="col-12" id="panel">
                         <Panel>
-                            <form >
+                            <form>
                                 <div className="row">
                                     <div className="col-12">
                                         <InputField type={"text"}
