@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Axios from 'axios';
 
 import Panel from '../Panel/Panel';
 import InputField from '../InputField/InputField';
@@ -43,74 +44,70 @@ class SignUpPanel extends Component {
     handleClick(event) {
         event.preventDefault();
         let userData = this.state.newUser;
-        
-        if(this.stringValidator(userData.username) || this.stringValidator(userData.email) 
-        || this.stringValidator(userData.password) || this.stringValidator(userData.refCode)){
+
+        if (this.stringValidator(userData.username) || this.stringValidator(userData.email)
+            || this.stringValidator(userData.password) || this.stringValidator(userData.refCode)) {
             alert("Please fill in the form!");
         }
-        else if (this.validateEmail(this.state.newUser.email)){
+        else if (this.validateEmail(this.state.newUser.email)) {
             var url = "http://localhost:3001"
 
-            fetch(url + '/frontend/all_users', {
+            Axios(url + '/frontend/all_users', {
                 method: "GET",
                 mode: 'cors',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 }
-            }).then((response) => {
-                response.json().then(data => {
-                    console.log("Successful" + JSON.stringify(data));
-                    //console.log("Successful" + JSON.stringify(data.users[0]));
-                    let found = false;
+            }).then((res) => {
 
-                    data.users.forEach((data) => {
-                        if (data.username === this.state.newUser.username){
-                            found = true;
-                            alert("Username Taken");
-                            return;
+                console.log("Successful" + JSON.stringify(res));
+                //console.log("Successful" + JSON.stringify(data.users[0]));
+                let found = false;
 
-                        }
-                        else if(data.email === this.state.newUser.email){
-                            found = true;
-                            alert("Email Taken");
-                            return;
-                        }                   
-                    })
+                res.users.forEach((data) => {
+                    if (res.username === this.state.newUser.username) {
+                        found = true;
+                        alert("Username Taken");
+                        return;
 
-                    if(!found){
-                        fetch(url + "/frontend/signup", {
-                            method: "POST",
-                            mode: "cors",
-                            body: JSON.stringify({
-                              "username": userData.username,
-                              "email": userData.email,
-                              "password": userData.password,
-                              "code": userData.refCode
-                            }), // string or object
-                            headers: {
-                              'Content-Type': "application/json"
-                            }
-                        }).then((response) => {
-                            if (response.state !== 200){
-                                return;
-                            }
-                            else {
-                            response.json().then(data => {
-                                console.log("Successful" + JSON.stringify(data));
-                                //console.log("Successful" + JSON.stringify(data.users[0]));
-                                alert("Verification e-mail sent. Check your inbox to confirm your account, (might go to your junk folder)")              
-                            });
-                        }
-                        });                             
+                    }
+                    else if (res.email === this.state.newUser.email) {
+                        found = true;
+                        alert("Email Taken");
+                        return;
                     }
                 })
-                .catch((error) => {
+
+                if (!found) {
+                    Axios(url + "/frontend/signup", {
+                        method: "POST",
+                        mode: "cors",
+                        body: JSON.stringify({
+                            "username": userData.username,
+                            "email": userData.email,
+                            "password": userData.password,
+                            "code": userData.refCode
+                        }), // string or object
+                        headers: {
+                            'Content-Type': "application/json"
+                        }
+                    }).then((res) => {
+                        if (res.status !== 200) {
+                            return;
+                        }
+                        else {
+                            console.log("Successful" + JSON.stringify(res));
+                            //console.log("Successful" + JSON.stringify(data.users[0]));
+                            alert("Verification e-mail sent. Check your inbox to confirm your account, (might go to your junk folder)")
+                        };
+                    });
+                }
+            }).catch((error) => {
                     console.log("Unable to sign up " + error);
                 })
-            })
         }
-        else{
+        else {
             alert("Enter a valid email");
         }
     }
@@ -129,12 +126,12 @@ class SignUpPanel extends Component {
         })
     }
 
-    validateEmail(email){
+    validateEmail(email) {
         let re = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
         return re.test(email)
-      }
-    
-    stringValidator(string){
+    }
+
+    stringValidator(string) {
         return string.trim() === "" || string == null || string === "username" || string === "pass" || string === "code"
     }
 
