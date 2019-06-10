@@ -1,9 +1,9 @@
 import { Route, Switch, Redirect} from 'react-router-dom';
 import React, { Component } from 'react';
-import LoginPanel from './LoginPanel/LoginPanel'
-import Dashboard from './Dashboard/Dashboard'
-import SignUpPanel from './SignUpPanel/SignUpPanel';
-import Forgot from './Forgot/Forgot';
+import LoginPanel from './pages/LoginPanel/LoginPanel'
+import Dashboard from './pages//Dashboard/Dashboard'
+import SignUpPanel from './pages/SignUpPanel/SignUpPanel';
+import Forgot from './pages/Forgot/Forgot';
 
 const testAuth = {
   isAuthenticated: false,
@@ -17,7 +17,7 @@ const testAuth = {
   }
 }
 
-const PrivateRoute = ({ component: Component, ... rest}) => (
+const PrivateRoute = ({ component: Component, ...rest}) => (
   <Route {...rest} render={(props) => (
     testAuth.isAuthenticated === true ? <Component {...props}/> : <Redirect to='/' />
   )} />

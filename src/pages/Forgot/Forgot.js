@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Axios from 'axios';
 
-import Panel from '../Panel/Panel';
-import InputField from '../InputField/InputField';
-import Button from '../Button/Button'
-import RegistrationLink from '../RegistrationLink/RegistrationLink';
+import Panel from '../../components/Panel/Panel';
+import InputField from '../../components/InputField/InputField';
+import Button from '../../components/Button/Button'
+import RegistrationLink from '../../components/RegistrationLink/RegistrationLink';
 
 import './Forgot.css';
 

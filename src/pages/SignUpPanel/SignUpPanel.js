@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Axios from 'axios';
 
-import Panel from '../Panel/Panel';
-import InputField from '../InputField/InputField';
-import Button from '../Button/Button'
-import RegistrationLink from '../RegistrationLink/RegistrationLink';
+import Panel from '../../components/Panel/Panel';
+import InputField from '../../components/InputField/InputField';
+import Button from '../../components/Button/Button'
+import RegistrationLink from '../../components/RegistrationLink/RegistrationLink';
 
 import './SignUpPanel.css';
 
@@ -80,9 +80,8 @@ class SignUpPanel extends Component {
                 })
 
                 if (!found) {
-                    fetch({
-                        url: url + "/frontend/signup",
-                        method: "post",
+                    fetch(url + "/frontend/signup", {
+                        method: "POST",
                         mode: "cors",
                         body: JSON.stringify({
                             "username": userData.username,
@@ -98,7 +97,9 @@ class SignUpPanel extends Component {
                             return;
                         }
                         else {
-                            console.log("Successful" + JSON.stringify());
+                            res.json().then((data)=>{
+                                console.log("Successful" + JSON.stringify(data));
+                            })
                             //console.log("Successful" + JSON.stringify(data.users[0]));
                             alert("Verification e-mail sent. Check your inbox to confirm your account, (might go to your junk folder)")
                         };
