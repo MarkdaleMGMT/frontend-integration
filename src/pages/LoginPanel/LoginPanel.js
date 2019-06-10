@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
+import auth from "../../routing/auth"
 //import Axios from 'axios';
 
 import Panel from '../../components/Panel/Panel';
@@ -69,7 +70,7 @@ class LoginPanel extends Component {
                 response.json().then(data => {
                 console.log("Successful" + JSON.stringify(data));
                 
-                let sessionTimeout = .25; //hours
+                let sessionTimeout = 1; //hours
                 let loginDuration = new Date();
                 loginDuration.setTime(loginDuration.getTime() + (sessionTimeout * 60 * 60 * 1000));
                 document.cookie = "CrewCentreSession=Valid; " + loginDuration.toGMTString() + "; path=/";
@@ -83,7 +84,9 @@ class LoginPanel extends Component {
                 console.log("NAVIGATING")
                 if(responseData.admin){
                   // redirect to admin dashboard
-                  return <Redirect to="/dashboard"/>
+                  auth.login((props)=>{
+                      props.history.push("/");
+                  });
                 }
                 else{
                     // redirect to dashboard

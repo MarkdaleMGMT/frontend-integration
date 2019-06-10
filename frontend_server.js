@@ -1,8 +1,7 @@
-const express = require('express')
-const bodyParser = require('body-parser')
-const { routes } = require('./app');
+const express = require('express');
+const bodyParser = require('body-parser');
+const { routes } = require('./src/app/index');
 const { createTerminus } = require('@godaddy/terminus');
-
 
 const http = require('http');
 // var https = require('https');
@@ -10,9 +9,14 @@ const http = require('http');
 const port = 3001 // port
 const app = express()
 
-var { connection } = require('./app/util/mysql_connection')
+var { connection } = require('./src/app/util/mysql_connection')
 
 
+// // tell passport to use our "strategy"
+// passport.use(strategy);
+
+// // add passport as application-level middleware
+// app.use(passport.initialize());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -63,8 +67,6 @@ async function onHealthCheck() {
   // checks if the system is healthy, like the db connection is live
   // resolves, if health, rejects if not
 }
-
-
 
 server.listen(port,function (err) {
   if (err) {
