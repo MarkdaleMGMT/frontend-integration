@@ -8,11 +8,11 @@ const app = express();
 //    res.send({msg: 'hello! Server is up and running'});
 //  });
 
-app.use(express.static("build"));
+app.use(express.static("public"));
 
 //Redirect all server request to index.html
 app.get('/*', function (req, res) {
-  res.sendFile(path.join(__dirname, '../../build/index.html'));
+  res.sendFile(path.join(__dirname, '../../public/index.html'));
 });
 
 app.use('/frontend', require('./frontend'));
