@@ -35,15 +35,7 @@ class LoginPanel extends Component {
                       }
            }
         }, () => console.log(this.state.user)
-        )
-    }
-
-    componentDidMount() {
-
-    }
-
-    componentWillUnmount(){
-
+        );
     }
 
     handleClick(event) {
@@ -81,9 +73,9 @@ class LoginPanel extends Component {
                 }
                 sessionStorage.setItem("data", JSON.stringify(responseData));
                 console.log("NAVIGATING")
-               auth.login(() => {
-                   this.props.history.push("/dashboard");
-               });
+           //    auth.login(() => {
+             //      this.props.history.push("/dashboard");
+             //  });
                 })
             }
             else{
