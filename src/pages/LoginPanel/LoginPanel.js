@@ -159,8 +159,4 @@ class LoginPanel extends Component {
     }
 }
 
-<<<<<<< HEAD
 export default withRouter(LoginPanel);
-=======
-export default LoginPanel;
->>>>>>> 7b6240c7d0ac8a2936cf0391b77895d6ca1bffd2

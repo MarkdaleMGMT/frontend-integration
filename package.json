@@ -20,7 +20,7 @@
     "request-promise": "^4.2.4"
   },
   "scripts": {
-    "start": "npm run prep",
+    "start": "react-scripts start",
     "prep": "chmod +x preproc.sh && ./preproc.sh",
     "build": "react-scripts build",
     "test": "react-scripts test",
