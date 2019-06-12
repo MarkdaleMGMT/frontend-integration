@@ -14,7 +14,7 @@ sed -i -e "s|http://localhost:8080|$server|g" *.js
 sed -i -e "s|http://localhost:3000|$server|g" *.js
 sed -i -e "s|http://localhost:3001|$server|g" *.js
 sed -i -e "s|http://165.227.35.11|$server|g" *.js
-cd ./server/app/frontend
+cd ./src/app/frontend
 sed -i -e  "s|http://localhost:8080|$server|g" *.js
 sed -i -e "s|http://localhost:3000|$server|g" *.js
 sed -i -e "s|http://localhost:3001|$server|g" *.js
