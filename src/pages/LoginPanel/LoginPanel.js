@@ -51,7 +51,7 @@ class LoginPanel extends Component {
         let userData = this.state.user;
         console.log("userData", userData);
 
-        var url = "http://localhost:3001"
+        var url = "http://138.197.175.92"
 
         fetch(url + "/frontend/login",{
             method: "POST",
@@ -159,4 +159,8 @@ class LoginPanel extends Component {
     }
 }
 
+<<<<<<< HEAD
 export default withRouter(LoginPanel);
+=======
+export default LoginPanel;
+>>>>>>> 7b6240c7d0ac8a2936cf0391b77895d6ca1bffd2
