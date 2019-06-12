@@ -44,7 +44,7 @@ class Forgot extends Component {
     handleClick(event) {
         event.preventDefault();
         //  let userData = this.state.user;
-        var url = "http://localhost:3001"
+        var url = "http://138.197.175.92"
         
         if (this.validateEmail(this.state.user.email)) {
 

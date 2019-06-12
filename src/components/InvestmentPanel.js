@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './InvestmentPanel.css'
+//import './InvestmentPanel.css'
 
 class InvestmentPanel extends Component {
     render() {
