@@ -52,7 +52,7 @@ class LoginPanel extends Component {
         let userData = this.state.user;
         console.log("userData", userData);
 
-        var url = "http://localhost:3001"
+        var url = "http://138.197.175.92"
 
         fetch(url + "/frontend/login",{
             method: "POST",
