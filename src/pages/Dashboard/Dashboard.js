@@ -6,9 +6,9 @@ import InvestmentPanel from '../../components/InvestmentPanel';
 
 class Dashboard extends Component {
 
-    componentDidMount(){
-        console.log(sessionStorage.getItem("data").username);
-    }
+    // componentDidMount(){
+    //     console.log(sessionStorage.getItem("data").username);
+    // }
 
     render() {
         return (
