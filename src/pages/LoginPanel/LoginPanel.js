@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, withRouter} from 'react-router-dom';
 import auth from "../../routing/auth"
 //import Axios from 'axios';
 
@@ -18,7 +18,7 @@ class LoginPanel extends Component {
                 username:'',
                 password: ''
             },
-            redirect: '/'
+            redirect: false
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -47,7 +47,6 @@ class LoginPanel extends Component {
     }
 
     handleClick(event) {
-
         event.preventDefault();
         let userData = this.state.user;
         console.log("userData", userData);
@@ -82,15 +81,9 @@ class LoginPanel extends Component {
                 }
                 sessionStorage.setItem("data", JSON.stringify(responseData));
                 console.log("NAVIGATING")
-                if(responseData.admin){
-                  // redirect to admin dashboard
-                  auth.login((props)=>{
-                      props.history.push("/");
-                  });
-                }
-                else{
-                    // redirect to dashboard
-                }
+                auth.login(() => {
+                    this.props.history.push("/dashboard");
+                });
                 })
             }
             else{
@@ -98,7 +91,6 @@ class LoginPanel extends Component {
             }
         }).catch((err)=>{
             console.log("error: " + err);
- 
         })
 
     }
@@ -167,4 +159,4 @@ class LoginPanel extends Component {
     }
 }
 
-export default LoginPanel;
+export default withRouter(LoginPanel);

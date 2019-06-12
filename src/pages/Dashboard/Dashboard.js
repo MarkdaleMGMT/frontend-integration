@@ -5,6 +5,11 @@ import MainContainer from '../../components/MainContainer'
 import InvestmentPanel from '../../components/InvestmentPanel';
 
 class Dashboard extends Component {
+
+    componentDidMount(){
+        console.log(sessionStorage.getItem("data").username);
+    }
+
     render() {
         return (
             <MainContainer sidebar="Dashboard">

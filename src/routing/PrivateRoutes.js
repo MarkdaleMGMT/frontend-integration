@@ -3,29 +3,11 @@ import React from 'react';
 import auth from './auth';
 
 
-const PrivateRoute = ({ component: Component, ...rest }) => {
-  return (
-    <Route
-      {...rest}
-      render={(props) => {
-        if (auth.isAuthenticated()) {
-          if (auth.isAdmin()) {
-            return <Component {...props} />;
-          }
-          else {
-            return <Component {...props} />;
-          }
-        }
-        else {
-          return <Redirect to={
-            {
-              pathname: "/"
-            }
-        } />
-      }}
-    }
-    />
-  );
-}
+const PrivateRoute = ({ component: Component, ...rest }) => (
+  <Route {...rest} render={props =>
+    auth.getAuth() === true ? (<Component {...props} />) : (<Redirect to={{pathname: "/dashboard"}}/>)
+  }
+  />);
+
 
 export default PrivateRoute;

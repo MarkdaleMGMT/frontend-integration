@@ -1,35 +1,31 @@
 class Auth {
-    constructor() {
-        this.authenticated = false;
-        this.admin = false;
+    constructor(){
+        this.isAuthenticated = false;
     }
 
     login(cb) {
         var sessionData = JSON.parse(sessionStorage.getItem('data'));
-        if(sessionData.username !== "" || sessionData.username !== null){
-            this.authenticated = true;
-            if (sessionData.admin === true){
-                console.log("admin user");
-                this.admin = true;
-                cb();
-            }
+        if (sessionData.username !== "" || sessionData.username !== null) {
+            this.isAuthenticated = true;
         }
-    }
+        else{
+            this.isAuthenticated = false;
+        }
 
-    logout(cb) {
-        this.authenticated = false;
-        this.admin = false;
-        sessionStorage.clear();
         cb();
     }
 
-    isAuthenticated(){
-        return this.authenticated;
+    getAuth() {
+        return this.isAuthenticated;
     }
 
-    isAdmin(){
-        return this.admin;
-    }
+
+    // logout(cb) {
+    //     this.authenticated = false;
+    //     this.admin = false;
+    //     sessionStorage.clear();
+    //     cb();
+    // }
 }
 
 export default new Auth()

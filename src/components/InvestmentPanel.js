@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
-import './InvestmentPanel.css'
+//import './InvestmentPanel.css'
 
 class InvestmentPanel extends Component {
+
+    componentDidMount(){
+
+    }
+
     render() {
         return (
             <div className="card shadow p-3 mb-5 bg-white rounded" id="investment-panel">

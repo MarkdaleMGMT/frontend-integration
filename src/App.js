@@ -6,15 +6,8 @@ import SignUpPanel from './pages/SignUpPanel/SignUpPanel';
 import Forgot from './pages/Forgot/Forgot';
 import PrivateRoute from './routing/PrivateRoutes';
 
-
-/*
-
-      <Route exact path='/dashboard' render={() => (
-          <Dashboard />
-        )} />
-*/
-
 class App extends Component {
+  
   render() {
     return (
       <Switch>
@@ -35,6 +28,7 @@ class App extends Component {
       </Switch>
     );
   }
+  
 }
 
 export default App;
