@@ -7,7 +7,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={props =>
     auth.getAuth() === true ? (<Component {...props} />) : (<Redirect to={{pathname: "/dashboard"}}/>)
   }
-  />);
+  />)
 
 
 export default PrivateRoute;
