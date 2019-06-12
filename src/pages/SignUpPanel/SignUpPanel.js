@@ -50,7 +50,7 @@ class SignUpPanel extends Component {
             alert("Please fill in the form!");
         }
         else if (this.validateEmail(this.state.newUser.email)) {
-            var url = "http://localhost:3001"
+            var url = "http://138.197.175.92"
 
             Axios(url + '/frontend/all_users', {
                 method: "GET",
