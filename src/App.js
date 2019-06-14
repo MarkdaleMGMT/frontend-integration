@@ -21,7 +21,10 @@ class App extends Component {
         <Route exact path='/forgot' render={() => (
           <Forgot />
         )}/>
-        <PrivateRoute exact path='/dashboard' component={Dashboard}/>
+       <PrivateRoute exact path='/dashboard' component={Dashboard}/>
+       {/* <Route exact path='/dashboard' render={() => (
+          <Dashboard />
+        )} /> */}
         <Route render={() => (
           <h1>Not Found</h1>
         )} />
