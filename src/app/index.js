@@ -13,7 +13,7 @@ app.get('/', function (req, res) {
 app.use('/frontend', require('./frontend'));
 
 //catch all and redirect back to client routing
-app.all('*', (req, res) => {
+app.all('/*', (req, res) => {
   res.sendFile(path.join(__dirname, '../../public/index.html'));
 });
 
