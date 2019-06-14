@@ -3,11 +3,14 @@ import React from 'react';
 import auth from './auth';
 
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
-  <Route {...rest} render={props =>
-    auth.getAuth() === true ? (<Component {...props} />) : (<Redirect to={{pathname: "/dashboard"}}/>)
-  }
-  />);
-
+const PrivateRoute = ({ component: Component, ...rest }) => {
+  return (
+    <Route {...rest} render={(props) => (
+      auth.isAuthenticated === true
+        ? <Component {...props} />
+        : <Redirect to='/login' />
+    )} />
+  );
+}
 
 export default PrivateRoute;
