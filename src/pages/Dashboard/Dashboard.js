@@ -14,7 +14,7 @@ class Dashboard extends Component {
         return (
             <MainContainer sidebar="Dashboard">
                 <div className="row">
-                    <div className="col-12">
+                    <div className="col-12 offset-4">
                     <InvestmentPanel></InvestmentPanel>
                     </div>
                 </div>
