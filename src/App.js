@@ -14,7 +14,9 @@ class App extends Component {
         <Route exact path='/' render={() => (
           <LoginPanel />
         )} />
-  
+           <Route exact path='/login' render={() => (
+          <LoginPanel />
+        )} />
         <Route exact path='/signup' render={() => (
           <SignUpPanel />
         )} />

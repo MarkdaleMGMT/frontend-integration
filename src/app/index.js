@@ -4,11 +4,10 @@ const app = express();
 
  app.use(express.static("build"));
 
-// //Redirect server request to index.html
-// app.get('/', function (req, res) {
-//   // res.send({msg: 'hello! Server is up and running'});
-//   res.sendFile(path.join(__dirname, '../../build/index.html'));
-// });
+app.get('/', function (req, res) {
+  // res.send({msg: 'hello! Server is up and running'});
+  res.sendFile(path.join(__dirname, '../../build/index.html'));
+})
 
 app.use('/frontend', require('./frontend'));
 
