@@ -11,13 +11,6 @@ const app = express()
 
 var { connection } = require('./src/app/util/mysql_connection')
 
-
-// // tell passport to use our "strategy"
-// passport.use(strategy);
-
-// // add passport as application-level middleware
-// app.use(passport.initialize());
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
