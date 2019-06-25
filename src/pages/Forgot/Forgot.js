@@ -113,7 +113,7 @@ class Forgot extends Component {
                             </div>
                             <div className="row" id="registration-links">
                                 <div className="col-6" id="login">
-                                    <Link to="/"><RegistrationLink>Login</RegistrationLink></Link>
+                                    <Link to="/login"><RegistrationLink>Login</RegistrationLink></Link>
                                 </div>
                                 <div className="col-6" id="sign-up">
                                     <Link to="/signup"><RegistrationLink>Sign Up</RegistrationLink></Link>

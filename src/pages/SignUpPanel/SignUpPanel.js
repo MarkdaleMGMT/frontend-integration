@@ -202,7 +202,7 @@ class SignUpPanel extends Component {
                             </form>
                             <div className="row" id="registration-links">
                                 <div className="col-6" id="login">
-                                    <Link to="/"><RegistrationLink>Login</RegistrationLink></Link>
+                                    <Link to="/login"><RegistrationLink>Login</RegistrationLink></Link>
                                 </div>
                                 <div className="col-6" id="forgot">
                                     <Link to="/forgot"><RegistrationLink>Forgot</RegistrationLink></Link>
