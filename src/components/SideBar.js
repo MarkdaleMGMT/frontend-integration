@@ -15,7 +15,7 @@ class SideBar extends Component {
 
     componentDidMount() {
         this._isMounted = true;
-        var url = "http://138.197.175.92";
+        var url = "http://localhost:3001";
         if (this._isMounted){
             var sessionData = JSON.parse(sessionStorage.getItem('data'));
             //console.log(sessionData);
@@ -23,21 +23,20 @@ class SideBar extends Component {
               user: sessionData
             })
         }
-        Axios(url + '/account_investments', {
+        Axios(url + '/frontend/account_investments/' + sessionData.username, {
             method: "GET",
-            params :{
-                username: this.state.user.username
-            },
             mode: 'cors',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             }
         }).then(data => {
+            console.log("data receieved: " + data)
             if (this._isMounted) {
                 this.setState({
                     currency: data
                 });
+                console.log("state -> currency: " + this.state.currency);
             }
             }).catch(err => {
                 console.log("error");

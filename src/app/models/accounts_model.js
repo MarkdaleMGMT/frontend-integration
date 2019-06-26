@@ -30,9 +30,9 @@ async function get_all_accounts(investment_id){
   return accounts;
 }
 
-// async function get_investments_by_account(username){
-//     const [accounts, fields] = await db.connection.query("SELECT investment_id FROM account WHERE username = ?",[username]);
-//     return accounts;
+async function get_investments_by_account(username){
+    const [accounts, fields] = await db.connection.query("SELECT investment_id FROM account WHERE username = ?",[username]);
+    return accounts;
   }
 
 module.exports = {
@@ -40,8 +40,7 @@ module.exports = {
   get_account_by_investment,
   get_accounts_by_investment,
   get_investment_account,
-  account_balance,
   get_accounts_per_user,
   get_all_accounts,
-//   get_investments_by_account
+  get_investments_by_account
 };
