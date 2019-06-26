@@ -23,15 +23,22 @@ class SideBar extends Component {
               user: sessionData
             })
         }
-        Axios(url + '/frontend/all_users', {
+        Axios(url + '/account_investments', {
             method: "GET",
+            params :{
+                username: this.state.user.username
+            },
             mode: 'cors',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             }
         }).then(data => {
-             
+            if (this._isMounted) {
+                this.setState({
+                    currency: data
+                });
+            }
             }).catch(err => {
                 console.log("error");
             });
@@ -53,7 +60,7 @@ class SideBar extends Component {
                     </div>
                     <br></br>
                     <div className="list-group list-group-flush">
-                        <Link to="#" className="list-group-item list-group-item-action bg-gray"><i className="fas fa-chevron-right"></i> CLAM</Link>
+                        <Link to="#" className="list-group-item list-group-item-action bg-gray"><i className="fas fa-chevron-right"></i> CLAM {this.state.currency[0]}</Link>
                         <Link to="#" className="list-group-item list-group-item-action bg-gray"><i className="fas fa-chevron-right"></i> BTC</Link>
                         <Link to="#" className="list-group-item list-group-item-action bg-gray"><i className="fas fa-chevron-right"></i> CAD</Link>
                         <Link to="#" className="list-group-item list-group-item-action bg-gray"><i className="fas fa-chevron-right"></i> USD</Link>
