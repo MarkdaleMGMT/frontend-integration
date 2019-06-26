@@ -33,3 +33,4 @@ async function sendEmail(receiver, subject, text){
 
 }
 module.exports = {sendEmail}
+

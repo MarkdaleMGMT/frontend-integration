@@ -51,9 +51,9 @@ class Forgot extends Component {
             Axios(url + "/frontend/reset_password", {
                 method: "POST",
                 mode: "cors",
-                body: JSON.stringify({
+                data: {
                     "email": this.state.user.email
-                }), // string or object
+                }, // string or object
                 headers: {
                     'Content-Type': "application/json"
                 }

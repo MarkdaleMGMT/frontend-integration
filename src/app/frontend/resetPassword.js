@@ -20,7 +20,6 @@ async function check_email(email){
 	return [false]
 }
 module.exports = async function reset_pass(req, res){
-	console.log(req);
 	let email = req.body.email
 	console.log("reset pass", email)
 	try{
