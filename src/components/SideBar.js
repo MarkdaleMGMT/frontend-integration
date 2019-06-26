@@ -2,8 +2,45 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import './SideBar.css'
+import Axios from 'axios';
 
 class SideBar extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            user: {},
+            currency: []
+        }
+    }
+
+    componentDidMount() {
+        this._isMounted = true;
+        var url = "http://138.197.175.92";
+        if (this._isMounted){
+            var sessionData = JSON.parse(sessionStorage.getItem('data'));
+            //console.log(sessionData);
+            this.setState({
+              user: sessionData
+            })
+        }
+        Axios(url + '/frontend/all_users', {
+            method: "GET",
+            mode: 'cors',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        }).then(data => {
+             
+            }).catch(err => {
+                console.log("error");
+            });
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
+    }
+
     render() {
         return (
             <div className="d-flex" id="wrapper">
@@ -26,7 +63,7 @@ class SideBar extends Component {
                     <div className="list-group list-group-flush">
                         <Link to="#" className="list-group-item list-group-item-action bg-gray"><i className="far fa-envelope"></i> Contact</Link>
                         <Link to="#" className="list-group-item list-group-item-action bg-gray"><i className="fas fa-sign-out-alt"></i> Logout</Link>
-                        <span className="list-group-item list-group-item-action align-center bg-gray">Refferal Code: 12345</span>
+                        <span className="list-group-item list-group-item-action align-center bg-gray">Refferal Code: {this.state.user.ref_code}</span>
                     </div>
                 </div>
             </div>
