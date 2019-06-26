@@ -31,12 +31,12 @@ class SideBar extends Component {
                 'Content-Type': 'application/json'
             }
         }).then(data => {
-            console.log("data receieved: " + data)
+            console.log("data receieved: " + JSON.stringify(data.data))
             if (this._isMounted) {
                 this.setState({
-                    currency: data
+                    currency: data.data
                 });
-                console.log("state -> currency: " + this.state.currency);
+                console.log("state: " + JSON.stringify(this.state.currency))
             }
             }).catch(err => {
                 console.log("error");
@@ -59,11 +59,17 @@ class SideBar extends Component {
                     </div>
                     <br></br>
                     <div className="list-group list-group-flush">
-                        <Link to="#" className="list-group-item list-group-item-action bg-gray"><i className="fas fa-chevron-right"></i> CLAM {this.state.currency[0]}</Link>
+                            {this.state.currency.map((element, index) => {
+                                    return (
+                                        <Link to="#" className="list-group-item list-group-item-action bg-gray"><i className="fas fa-chevron-right"></i> {element.currency}</Link>
+                                    )
+                                })}
+
+                        {/* <Link to="#" className="list-group-item list-group-item-action bg-gray"><i className="fas fa-chevron-right"></i> CLAM</Link>
                         <Link to="#" className="list-group-item list-group-item-action bg-gray"><i className="fas fa-chevron-right"></i> BTC</Link>
                         <Link to="#" className="list-group-item list-group-item-action bg-gray"><i className="fas fa-chevron-right"></i> CAD</Link>
                         <Link to="#" className="list-group-item list-group-item-action bg-gray"><i className="fas fa-chevron-right"></i> USD</Link>
-                        <Link to="#" className="list-group-item list-group-item-action bg-gray"><i className="fas fa-chevron-right"></i> GOLD</Link>
+                        <Link to="#" className="list-group-item list-group-item-action bg-gray"><i className="fas fa-chevron-right"></i> GOLD</Link> */}
                     </div>
                     <br></br>
                     <div className="list-group list-group-flush">
