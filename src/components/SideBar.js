@@ -15,7 +15,7 @@ class SideBar extends Component {
 
     componentDidMount() {
         this._isMounted = true;
-        var url = "http://localhost:3001";
+        var url = "http://138.197.175.92";
         if (this._isMounted){
             var sessionData = JSON.parse(sessionStorage.getItem('data'));
             //console.log(sessionData);
