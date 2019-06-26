@@ -1,0 +1,16 @@
+#button{
+    text-align: center;
+}
+
+#login-panel{
+    padding-top: 10%; 
+}
+
+@media (min-width: 768px){
+#login-panel{
+    padding: 10%; 
+     left: 21.65%;
+}
+}
+
+

@@ -1,0 +1,12 @@
+.btn.btn-rounded{
+    background-color: #4D96CC;
+    opacity: 100%;
+    color: #F6F6F6;
+    letter-spacing: .030em;
+    border-radius: 20px;
+    width: 100%;
+    font-family: 'Lato';
+    font-weight: bold;
+    margin-bottom: 8%;
+    
+}
