@@ -10,13 +10,28 @@ then
 fi
 server=$(echo "$server" | sed 's/\./\\\./g')
 
-sed -i -e "s|http://localhost:8080|$server|g" *.js
-sed -i -e "s|http://localhost:3000|$server|g" *.js
-sed -i -e "s|http://localhost:3001|$server|g" *.js
-sed -i -e "s|http://165.227.35.11|$server|g" *.js
-cd ./src/app/frontend
-sed -i -e  "s|http://localhost:8080|$server|g" *.js
-sed -i -e "s|http://localhost:3000|$server|g" *.js
-sed -i -e "s|http://localhost:3001|$server|g" *.js
-sed -i -e "s|http://165.227.35.11|$server|g" *.js
+cd /var/www/frontend-integration//src/pages/SignUpPanel
+sed -i "s|http://localhost:8080|$server|g" *.js
+sed -i "s|http://localhost:3000|$server|g" *.js
+sed -i "s|http://localhost:3001|$server|g" *.js
+sed -i "s|http://138.197.175.92|$server|g" *.js
+
+cd /var/www/frontend-integration//src/pages/LoginPanel
+sed -i "s|http://localhost:8080|$server|g" *.js
+sed -i "s|http://localhost:3000|$server|g" *.js
+sed -i "s|http://localhost:3001|$server|g" *.js
+sed -i "s|http://138.197.175.92|$server|g" *.js
+
+cd /var/www/frontend-integration//src/pages/Forgot
+sed -i "s|http://localhost:8080|$server|g" *.js
+sed -i "s|http://localhost:3000|$server|g" *.js
+sed -i "s|http://localhost:3001|$server|g" *.js
+sed -i "s|http://138.197.175.92|$server|g" *.js
+
+
+cd /var/www/frontend-integration/src/app/frontend
+sed -i "s|http://localhost:8080|$server|g" *.js
+sed -i "s|http://localhost:3000|$server|g" *.js
+sed -i "s|http://localhost:3001|$server|g" *.js
+sed -i "s|http://138.197.175.92|$server|g" *.js
 echo "Cleaning complete"

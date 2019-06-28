@@ -22,7 +22,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "prep": "chmod u+x preproc.sh && chmod u+x nginx_react_config.sh && ./nginx_react_config.sh && chmod u+x mysql_config.sh && ./mysql_config.sh",
+    "prep": "chmod u+x preproc.sh && ./preproc.sh && chmod u+x nginx_react_config.sh && ./nginx_react_config.sh && chmod u+x mysql_config.sh && ./mysql_config.sh",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
