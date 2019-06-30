@@ -184,9 +184,9 @@ class SignUpPanel extends Component {
                                 <div className="row">
                                     <div className="col-12">
                                         <InputField type={"text"}
-                                            title={"Refferal Code"}
+                                            title={"Referral Code"}
                                             name={"refCode"}
-                                            placeholder={"Refferal Code"}
+                                            placeholder={"Referral Code"}
                                             value={this.state.newUser.refCode}
                                             onChange={this.handleChange}
                                         />

@@ -75,7 +75,7 @@ class SideBar extends Component {
                     <div className="list-group list-group-flush">
                         <Link to="#" className="list-group-item list-group-item-action bg-gray"><i className="far fa-envelope"></i> Contact</Link>
                         <Link to="#" className="list-group-item list-group-item-action bg-gray"><i className="fas fa-sign-out-alt"></i> Logout</Link>
-                        <span className="list-group-item list-group-item-action align-center bg-gray">Refferal Code: {this.state.user.ref_code}</span>
+                        <span className="list-group-item list-group-item-action align-center bg-gray">Referral Code: {this.state.user.ref_code}</span>
                     </div>
                 </div>
             </div>
