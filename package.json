@@ -13,6 +13,7 @@
     "md5": "^2.2.1",
     "mysql2": "^1.6.5",
     "nodemailer": "^6.2.1",
+    "npm": "^6.9.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",
@@ -22,7 +23,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "prep": "chmod u+x preproc.sh && ./preproc.sh && chmod u+x nginx_react_config.sh && ./nginx_react_config.sh && chmod u+x mysql_config.sh && ./mysql_config.sh",
+    "prep": "chmod u+x preproc.sh && ./preproc.sh",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
